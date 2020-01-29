@@ -47,6 +47,9 @@ namespace MyCalculator
         }
         public double Power(double x, double exp)
         {
+            if(x == 0 && exp < 0)
+                throw new Exception("You tried calculating 0 to the power of a negative value. This is the same as dividing by 0");
+            
             Accumulator = Math.Pow(x, exp);
             return Accumulator;
         }

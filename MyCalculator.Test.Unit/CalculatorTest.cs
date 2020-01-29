@@ -81,6 +81,7 @@ namespace MyCalculator.Test.Unit
         }
 
         [TestCase(0,10,0)]
+        [TestCase(0, 0, 1)]
         [TestCase(10, -1, 0.1)]
         [TestCase(10, 0, 1)]
         [TestCase(10, 1, 10)]
@@ -90,6 +91,12 @@ namespace MyCalculator.Test.Unit
             double result = uut.Power(a, b);
 
             Assert.That(result, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void Power_0ToThePowerOfNegativeValue_ExceptionThrown()
+        {
+            Assert.That(() => uut.Power(0, -1), Throws.Exception.With.Message);
         }
     }
 }
