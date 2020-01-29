@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//This is the calculator BJØLLEFISK
 namespace MyCalculator
 {
     public class Calculator
