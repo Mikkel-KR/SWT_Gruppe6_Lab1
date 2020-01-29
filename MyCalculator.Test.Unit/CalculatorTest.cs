@@ -98,5 +98,48 @@ namespace MyCalculator.Test.Unit
         {
             Assert.That(() => uut.Power(0, -1), Throws.Exception.With.Message);
         }
+
+        [TestCase(10,5,4,2,3,1000)]
+        [TestCase(10, 10, 10, 10, 10, 0)]
+        public void Accumulator_DifferentCombinations_ReturnsAccumulatedCorrectResult(double add, double subt, double mult, 
+            double div, double pow, double expectedResult)
+        {
+            //Arrange
+            uut.Clear();
+
+            //Act
+            uut.Add(add);
+            uut.Subtract(subt);
+            uut.Multiply(mult);
+            uut.Divide(div);
+            uut.Power(pow);
+
+            double result = uut.Accumulator;
+
+            //Assert
+            Assert.That(result,Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void Accumulator_Divide_DividingByZero_ExceptionsThrown()
+        {
+            //Arrange
+            uut.Clear();
+            uut.Add(20); //Accumulator holds 20
+
+            //Assert
+            Assert.That(() => uut.Divide(0), Throws.TypeOf<DivideByZeroException>());
+        }
+
+        [Test]
+        public void Accumulator_Power_0ToThePowerOfNegativeValue_ExceptionsThrown()
+        {
+            //Arrange
+            uut.Clear(); // value == 0
+
+            //Assert
+            Assert.That(() => uut.Power(-1), Throws.Exception.With.Message);
+        }
+
     }
 }
