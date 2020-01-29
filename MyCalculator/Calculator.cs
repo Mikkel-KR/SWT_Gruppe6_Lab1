@@ -12,18 +12,43 @@ namespace MyCalculator
     {
         public double Accumulator { get; private set; } = 0;
 
-        public double Add(double a) => a + 10; //overloading bitches (udskrift med acumulator dims)
-        public double Add(double a, double b) => a + b;
-        public double Subtract(double a, double b) => a - b;
-        public double Multiply(double a, double b) => a * b;
+        public double Add(double a) //overloading bitches (udskrift med acumulator dims)
+        {
+            Accumulator += a;
+
+            return Accumulator;
+        }
+
+        public double Add(double a, double b)
+        {
+            Accumulator = a + b;
+            return Accumulator;
+        }
+
+        public double Subtract(double a, double b)
+        {
+            Accumulator = a - b;
+            return Accumulator;
+        }
+
+        public double Multiply(double a, double b)
+        {
+            Accumulator = a * b;
+            return Accumulator;
+        }
 
         public double Divide(double a, double b)
         {
             if (b == 0)
                 throw new DivideByZeroException();
 
-            return a / b;
+            Accumulator = a / b;
+            return Accumulator;
         }
-        public double Power(double x, double exp) => Math.Pow(x, exp);
+        public double Power(double x, double exp)
+        {
+            Accumulator = Math.Pow(x, exp);
+            return Accumulator;
+        }
     }
 }
