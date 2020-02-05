@@ -110,6 +110,14 @@ namespace MyCalculator.Test.Unit
             Assert.That(() => uut.Power(-9, 0.5), Throws.Exception.With.Message);
         }
 
+        [Test]
+        public void Power_NegativeAccumulatorToThePowerOfValueBetween0And1_ExceptionThrown()
+        {
+            uut.Clear();
+            uut.Subtract(16);
+            Assert.That(() => uut.Power(0.9), Throws.Exception.With.Message);
+        }
+
         [TestCase(10,5,4,2,3,1000)]
         [TestCase(10, 10, 10, 10, 10, 0)]
         public void Accumulator_DifferentCombinations_ReturnsAccumulatedCorrectResult(double add, double subt, double mult, 
