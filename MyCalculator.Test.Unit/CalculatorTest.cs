@@ -86,6 +86,7 @@ namespace MyCalculator.Test.Unit
         [TestCase(10, 0, 1)]
         [TestCase(10, 1, 10)]
         [TestCase(10, 2, 100)]
+        [TestCase(10, 3, 1000)]
         public void PowerTest_Success(double a, double b, double expectedResult)
         {
             double result = uut.Power(a, b);
