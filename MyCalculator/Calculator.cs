@@ -68,6 +68,10 @@ namespace MyCalculator
             if (Accumulator == 0 && exp < 0)
                 throw new Exception("You tried calculating 0 to the power of a negative value. This is the same as dividing by 0");
 
+            if (Accumulator < 0 && (exp > 0 && exp < 1))
+                throw new Exception("Invalid input");
+
+
             Accumulator = Math.Pow(Accumulator, exp);
             return Accumulator;
         }
@@ -75,6 +79,9 @@ namespace MyCalculator
         {
             if(x == 0 && exp < 0)
                 throw new Exception("You tried calculating 0 to the power of a negative value. This is the same as dividing by 0");
+
+            if (x < 0 && (exp > 0 && exp < 1))
+                throw new Exception("Invalid input");
 
             Accumulator = Math.Pow(x, exp);
             return Accumulator;

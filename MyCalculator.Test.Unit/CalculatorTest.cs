@@ -24,7 +24,8 @@ namespace MyCalculator.Test.Unit
         [TestCase(-2,-2,-4)]
         [TestCase(-2,2,0)]
         [TestCase(1.25,1.35,2.6)]
-        public void AddTest_Success(double a, double b, double expectedResult)
+        [TestCase(1.2, 2, 3.2)]
+        public void Add_AddIntegersAndFloat_ResultIsCorrect(double a, double b, double expectedResult)
         {
             // Arrange
             // - uses SetupTest()
@@ -42,7 +43,8 @@ namespace MyCalculator.Test.Unit
         [TestCase(10, -5, 15)]
         [TestCase(-10, -5, -5)]
         [TestCase(1.8, 1.2, 0.6)]
-        public void Subtract_Success(double a, double b, double expectedResult)
+        [TestCase(1.8, 1, 0.8)]
+        public void Subtract_SubtractIntegersAndFloats_ResultIsCorrect(double a, double b, double expectedResult)
         {
             double result = uut.Subtract(a, b);
 
@@ -67,7 +69,8 @@ namespace MyCalculator.Test.Unit
         [TestCase(5, 10, 0.5)]
         [TestCase(-10, -5, 2)]
         [TestCase(-10, 5, -2)]
-        public void Divide_Success(double a, double b, double expectedResult)
+        [TestCase(10, 2.5, 4)]
+        public void Divide_DivideIntegersAndFloats_Success(double a, double b, double expectedResult)
         {
             double result = uut.Divide(a, b);
 
@@ -85,9 +88,10 @@ namespace MyCalculator.Test.Unit
         [TestCase(10, -1, 0.1)]
         [TestCase(10, 0, 1)]
         [TestCase(10, 1, 10)]
+        [TestCase(9, 0.5, 3)]
         [TestCase(10, 2, 100)]
         [TestCase(10, 3, 1000)]
-        public void PowerTest_Success(double a, double b, double expectedResult)
+        public void Power_PowerWithIntegersAndFloats_Success(double a, double b, double expectedResult)
         {
             double result = uut.Power(a, b);
 
@@ -98,6 +102,12 @@ namespace MyCalculator.Test.Unit
         public void Power_0ToThePowerOfNegativeValue_ExceptionThrown()
         {
             Assert.That(() => uut.Power(0, -1), Throws.Exception.With.Message);
+        }
+
+        [Test]
+        public void Power_NegativeToThePowerOfValueBetween0And1_ExceptionThrown()
+        {
+            Assert.That(() => uut.Power(-9, 0.5), Throws.Exception.With.Message);
         }
 
         [TestCase(10,5,4,2,3,1000)]
