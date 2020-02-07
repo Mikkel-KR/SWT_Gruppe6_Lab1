@@ -120,6 +120,7 @@ namespace MyCalculator.Test.Unit
 
         [TestCase(10,5,4,2,3,1000)]
         [TestCase(10, 10, 10, 10, 10, 0)]
+        [TestCase(1,2,0,2,9,0)]
         public void Accumulator_DifferentCombinations_ReturnsAccumulatedCorrectResult(double add, double subt, double mult, 
             double div, double pow, double expectedResult)
         {
